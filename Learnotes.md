@@ -5,14 +5,28 @@
 - **最短完成时间优先**(Short Time-to-Completion First, **STCF**)
 - **时间片轮转**(Round-Robin, **RR**)
 - **多级反馈队列**(Multi-Level Feedback Queue, **MLFQ**)
+## Linux多线程(POSIX)
+- pthread_t
+- pthread_create()
+- pthread_join()
+- pthread_detach()
+- pthread_exit()
 ## 线程同步原语(POSIX)
 - **互斥锁**, Mutex Lock
-	- pthread_mutex_t
-	- pthread_mutex_init()
-	- pthread_mutex_lock()
-	- pthread_mutex_unlock()
-	- pthread_mutex_trylock()
+	- pthread_mutex_t, 互斥量数据类型
+	- pthread_mutex_init(), 初始化互斥量
+	- pthread_mutex_lock(), 获取锁, 如果指定互斥量还在上锁状态则堵塞等待直至可以获取锁.
+	- pthread_mutex_unlock(), 释放锁, 释放指定互斥锁
+	- pthread_mutex_trylock(), 尝试获取锁, 相较于pthread_mutex_lock(), 这个函数在不能获取锁的时候会直接返回而不是阻塞.
+	- pthread_mutex_destroy(), 销毁互斥量, 释放指定互斥量的内存.
+	- pthread_mutex_timedlock(), 等待一定时间获取锁, 如果不能在指定时间内获取锁则超时并返回错误.
 - **自旋锁**, Spin Lock
+	- pthread_spin_t
+	- pthread_spin_init()
+	- pthread_spin_lock()
+	- pthread_spin_unlock()
+	- pthread_spin_trylock()
+	- pthread_spin_destroy()
 - **条件变量**, Condition
 - **信号量**, Semaphore
 - **屏障**, Barrier
