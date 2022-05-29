@@ -18,7 +18,7 @@
 	- pthread_detach()
 	- pthread_exit()
 ## 线程同步原语(POSIX)
-- **互斥锁**, Mutex Lock
+- **互斥锁**, Mutex Lock.
 	- pthread_mutex_t, 互斥量数据类型
 	- pthread_mutex_init(), 初始化互斥量
 	- pthread_mutex_lock(), 获取锁, 如果指定互斥量还在上锁状态则堵塞等待直至可以获取锁.
@@ -26,15 +26,15 @@
 	- pthread_mutex_trylock(), 尝试获取锁, 相较于pthread_mutex_lock(), 这个函数在不能获取锁的时候会直接返回而不是阻塞.
 	- pthread_mutex_destroy(), 销毁互斥量, 释放指定互斥量的内存.
 	- pthread_mutex_timedlock(), 等待一定时间获取锁, 如果不能在指定时间内获取锁则超时并返回错误.
-- **自旋锁**, Spin Lock
+- **自旋锁**, Spin Lock.
 	- pthread_spin_t
 	- pthread_spin_init()
 	- pthread_spin_lock()
 	- pthread_spin_unlock()
 	- pthread_spin_trylock()
 	- pthread_spin_destroy()
-- **读写锁**
-- **条件变量**, Condition
+- **读写锁**, Read-Write Lock.
+- **条件变量**, Condition.
 	- pthread_cond_t
 	- pthread_cond_init()
 	- pthread_cond_wait()
@@ -42,8 +42,8 @@
 	- pthread_cond_destroy()
 	- pthread_cond_timewait()
 	- pthread_cond_broadcast()
-- **信号量**, Semaphore
-- **屏障**, Barrier
+- **信号量**, Semaphore.
+- **屏障**, Barrier.
 ## 廉价冗余磁盘阵列(RAID)
 - **RAID0**: 条带化形式, 性能和容量都很优秀, 但是没有冗余.
 - **RAID1**: 镜像化形式, 可靠性高, 但是容量利用差, 只能利用全部磁盘空间的一半.
