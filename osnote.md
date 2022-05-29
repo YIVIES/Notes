@@ -5,12 +5,18 @@
 - **最短完成时间优先**(Short Time-to-Completion First, **STCF**)
 - **时间片轮转**(Round-Robin, **RR**)
 - **多级反馈队列**(Multi-Level Feedback Queue, **MLFQ**)
+## 进程
+进程创建相关函数.
+- fork(): 创建进程.
+- wait(): 等待进程结束, 这个函数也有变体.
+- exec(): 这个函数有很多变体.
 ## Linux多线程(POSIX)
-- pthread_t
-- pthread_create()
-- pthread_join()
-- pthread_detach()
-- pthread_exit()
+- 这里是一些线程创建等操作相关的基本类型和函数.
+	- pthread_t
+	- pthread_create()
+	- pthread_join()
+	- pthread_detach()
+	- pthread_exit()
 ## 线程同步原语(POSIX)
 - **互斥锁**, Mutex Lock
 	- pthread_mutex_t, 互斥量数据类型
@@ -27,16 +33,24 @@
 	- pthread_spin_unlock()
 	- pthread_spin_trylock()
 	- pthread_spin_destroy()
+- **读写锁**
 - **条件变量**, Condition
+	- pthread_cond_t
+	- pthread_cond_init()
+	- pthread_cond_wait()
+	- pthread_cond_signal()
+	- pthread_cond_destroy()
+	- pthread_cond_timewait()
+	- pthread_cond_broadcast()
 - **信号量**, Semaphore
 - **屏障**, Barrier
 ## 廉价冗余磁盘阵列(RAID)
-- RAID0
-- RAID1
-- RAID4
-- RAID5
+- **RAID0**: 条带化形式, 性能和容量都很优秀, 但是没有冗余.
+- **RAID1**: 镜像化形式, 可靠性高, 但是容量利用差, 只能利用全部磁盘空间的一半.
+- **RAID4**: 奇偶校验形式, 可靠性好, 容错率好, 容量利用也还不错, 但是随机小写入情况下吞吐量很糟糕.
+- **RAID5**: 旋转奇偶校验形式, 和RAID4差不多, 比RAID4稍快一些, 但构建相对RAID4稍微麻烦一点.
 ## 文件和目录
 存储虚拟化形成了两个关键的抽象: 每个文件都有一个低级名称(**inode**). 目录中的每一个条目都指向文件或其他目录.
-- 文件: 文件就是一个线性字节数组，每个字节都可以读取或写入.
-- 目录: 目录像文件一样, 也有一个低级名字(**inode**号), 但是它的内容很具体, 它包含一个(用户可读名字, 低级名字)对的列表。例如存在一个低级名称为"10"的文件, 它的用户可读名称为"foo", 则"foo"所在的目录因此会有条目("foo", "10"), 将用户刻度名称映射到低级名称.
-- 目录树: 通过将目录放入其他目录中, 用户可以构建任意的目录树(Directory tree), 在该目录树下存储所有文件和目录.
+- **文件**: 文件就是一个线性字节数组，每个字节都可以读取或写入.
+- **目录**: 目录像文件一样, 也有一个低级名字(**inode**号), 但是它的内容很具体, 它包含一个(用户可读名字, 低级名字)对的列表。例如存在一个低级名称为"10"的文件, 它的用户可读名称为"foo", 则"foo"所在的目录因此会有条目("foo", "10"), 将用户刻度名称映射到低级名称.
+- **目录树**: 通过将目录放入其他目录中, 用户可以构建任意的目录树(Directory tree), 在该目录树下存储所有文件和目录.
