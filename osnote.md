@@ -19,38 +19,38 @@
 ## Linux多线程(POSIX)
 
 - 这里是一些线程创建等操作相关的基本类型和函数.
-  - pthread_t
-  - pthread_create()
-  - pthread_join()
-  - pthread_detach()
-  - pthread_exit()
+	- pthread_t
+	- pthread_create()
+	- pthread_join()
+	- pthread_detach()
+	- pthread_exit()
 
 ## 线程同步原语(POSIX)
 
 - **互斥锁**, Mutex Lock.
-  - pthread_mutex_t, 互斥量数据类型
-  - pthread_mutex_init(), 初始化互斥量
-  - pthread_mutex_lock(), 获取锁, 如果指定互斥量还在上锁状态则堵塞等待直至可以获取锁.
-  - pthread_mutex_unlock(), 释放锁, 释放指定互斥锁
-  - pthread_mutex_trylock(), 尝试获取锁, 相较于pthread_mutex_lock(), 这个函数在不能获取锁的时候会直接返回而不是阻塞.
-  - pthread_mutex_destroy(), 销毁互斥量, 释放指定互斥量的内存.
-  - pthread_mutex_timedlock(), 等待一定时间获取锁, 如果不能在指定时间内获取锁则超时并返回错误.
+	- pthread_mutex_t, 互斥量数据类型
+	- pthread_mutex_init(), 初始化互斥量
+	- pthread_mutex_lock(), 获取锁, 如果指定互斥量还在上锁状态则堵塞等待直至可以获取锁.
+	- pthread_mutex_unlock(), 释放锁, 释放指定互斥锁
+	- pthread_mutex_trylock(), 尝试获取锁, 相较于pthread_mutex_lock(), 这个函数在不能获取锁的时候会直接返回而不是阻塞.
+	- pthread_mutex_destroy(), 销毁互斥量, 释放指定互斥量的内存.
+	- pthread_mutex_timedlock(), 等待一定时间获取锁, 如果不能在指定时间内获取锁则超时并返回错误.
 - **自旋锁**, Spin Lock.
-  - pthread_spin_t
-  - pthread_spin_init()
-  - pthread_spin_lock()
-  - pthread_spin_unlock()
-  - pthread_spin_trylock()
-  - pthread_spin_destroy()
+	- pthread_spin_t
+	- pthread_spin_init()
+	- pthread_spin_lock()
+	- pthread_spin_unlock()
+	- pthread_spin_trylock()
+	- pthread_spin_destroy()
 - **读写锁**, Read-Write Lock.
 - **条件变量**, Condition.
-  - pthread_cond_t
-  - pthread_cond_init()
-  - pthread_cond_wait()
-  - pthread_cond_signal()
-  - pthread_cond_destroy()
-  - pthread_cond_timewait()
-  - pthread_cond_broadcast()
+	- pthread_cond_t
+	- pthread_cond_init()
+	- pthread_cond_wait()
+	- pthread_cond_signal()
+	- pthread_cond_destroy()
+	- pthread_cond_timewait()
+	- pthread_cond_broadcast()
 - **信号量**, Semaphore.
 - **屏障**, Barrier.
 
@@ -70,3 +70,11 @@
 - **目录树**: 通过将目录放入其他目录中, 用户可以构建任意的目录树(Directory tree), 在该目录树下存储所有文件和目录.
 - **inode**: 一种数据结构, 记录了文件的各种信息, 一般大小为128字节或者256字节.
 - **inode表**: inode表(**inode table**), 存储系统中所有inode的区域.
+## 文件系统
+
+一个简单的文件系统一般会有S块, inode bitmap, data bitmap, inode tables, data blocks.
+- **S块**: 名为超级快(super block), 存储了整个文件系统的各种信息.
+- **inode bitmap**: inode位图, 来管理和记录inode table的使用情况.
+- **data bitmap**: data位图, 来管理和记录data blocks的使用情况.
+- **inode table**: inode表, 存储inode的区域.
+- **data blocks**: data块, 数据存储的区域.
